@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,10 +21,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val buttonE = findViewById<Button>(R.id.button1)
+        var valueE = valueA + valueB
+        var valueF = valueC - valueD
         buttonE.setText("${valueA} + ${valueB}").toString()
+        buttonE.setOnClickListener {
+            if(valueE > valueF){
+                Toast.makeText(this, "Benar", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Salah", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         val buttonF = findViewById<Button>(R.id.button2)
         buttonF.setText("${valueC} - ${valueD}").toString()
+        buttonF.setOnClickListener {
+            if(valueF > valueE){
+                Toast.makeText(this, "Benar", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "Salah", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
